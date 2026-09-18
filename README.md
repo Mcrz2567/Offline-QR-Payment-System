@@ -47,14 +47,33 @@ Spring Data JPA / Hibernate
   v
 MySQL
 
-
-One small Markdown detail: the architecture goes inside the triple-backtick `text` block. IntelliJ may visually highlight it differently; that's expected.
-
-This architecture section is useful because if a recruiter opens the repository for **30 seconds**, they can immediately understand how you've structured the backend.
-
-Add those two sections. That'll probably be enough for today's 15–20 minutes. If you've still got a few minutes afterward, we'll add **API Endpoints**, which should be very quick.
-
 ## API Endpoints
+
+### Create User
+
+`POST /users`
+
+Example request:
+
+```json
+{
+  "username": "testuser",
+  "balance": 100.00
+}
+```
+
+### Get All Users
+
+`GET /users`
+
+### Get User by ID
+
+`GET /users/{id}`
+
+Example:
+
+`GET /users/1`
+
 
 ## Project Motivation
 
@@ -65,6 +84,20 @@ This project explores an offline-first payment architecture where a limited amou
 The current version focuses on establishing the backend foundation required to support this architecture.
 
 ## Running Locally
+
+### Prerequisites
+
+- Java 26
+- MySQL
+- Git
+
+### Setup
+
+1. Clone the repository.
+2. Create a MySQL database named `qr_payment_system_v1`.
+3. Configure the `DB_PASSWORD` environment variable with your local MySQL password.
+4. Run the Spring Boot application using the Maven wrapper.
+5. The API will be available at `http://localhost:8080`.
 
 ## Planned Development
 
@@ -81,44 +114,3 @@ The current backend provides the foundation for the larger offline payment syste
 - Input validation and exception handling
 - Automated testing
 - Android client integration
-
-### Prerequisites
-
-- Java 26
-- MySQL
-- Git
-
-### Setup
-
-1. Clone the repository.
-2. Create a MySQL database named `qr_payment_system_v1`.
-3. Configure the `DB_PASSWORD` environment variable with your local MySQL password.
-4. Run the Spring Boot application using the Maven wrapper.
-5. The API will be available at `http://localhost:8080`.
-
-### Create User
-
-`POST /users`
-
-Example request:
-
-```json
-{
-  "username": "testuser",
-  "balance": 100.00
-}
-
-Get All Users
-GET /users
-
-Example: GET/users/1
-
-
-The **POST example is especially useful** because the reader needs to know what JSON the endpoint expects. For the GET endpoints, examples aren't really necessary because there's no request body.
-
-Later, when we add `Transaction`, this section becomes more impressive because we'll document things like:
-
-```text
-POST /transactions
-GET /transactions
-GET /transactions/{id}
